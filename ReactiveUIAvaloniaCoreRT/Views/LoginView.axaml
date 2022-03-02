@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             x:Class="ReactiveUIAvaloniaCoreRT.Views.LoginView">
+	<Border Classes="container" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="30">
+	<StackPanel  Spacing="15" >
+		<Canvas Background="Gray">
+			<Image VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Source="resm:ReactiveUIAvaloniaCoreRT.Resources.login.png"/>
+		</Canvas>
+		<TextBlock Classes="h1" Foreground="Gray" Text="LOGIN" TextAlignment="Center" />
+
+		<TextBlock Text="{Binding ErrorMessage}" Foreground="Red" />
+
+		<TextBlock 
+				   Text="Login Key:"
+				   Margin="8,0" />
+		<TextBox PasswordChar="*" x:Name="LoginTextBox"
+				 Margin="8,0,8,8"
+				 Text="{Binding Key, Mode=TwoWay}"/>
+		<CheckBox IsChecked="{Binding SaveKey}" >
+			Save Key
+		</CheckBox>
+		<Grid ColumnDefinitions="*,10,*">
+			<Button Grid.Column="0" HorizontalAlignment="Stretch" Command="{Binding LoginCommand}">
+				<Button.Content>
+					<TextBlock TextAlignment="Center"  Text="Ok"/>
+				</Button.Content>
+			</Button>
+			<Button Grid.Column="2" HorizontalAlignment="Stretch"  Command="{Binding BuyCommand}">
+				<Button.Content>
+					<TextBlock TextAlignment="Center" Text="Message Box"/>
+				</Button.Content>
+			</Button>
+		</Grid>
+		
+	</StackPanel >
+	</Border>
+</UserControl>

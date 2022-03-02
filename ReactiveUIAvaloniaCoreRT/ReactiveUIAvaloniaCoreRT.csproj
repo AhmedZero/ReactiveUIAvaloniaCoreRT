@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <OutputType>Exe</OutputType>
+	  <TrimmerDefaultAction>link</TrimmerDefaultAction>
+	  <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
+	  <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+	  <IlcDisableUnhandledExceptionExperience>true</IlcDisableUnhandledExceptionExperience>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <Platforms>AnyCPU;x64</Platforms>
+	  <IsWindows Condition="$([MSBuild]::IsOSPlatform('Windows'))">true</IsWindows>
+	  <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+	<ItemGroup>
+		<RdXmlFile Include="rd.xml" />
+	</ItemGroup>
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="Resources\login.png" />
+    <None Remove="Resources\VIP_Image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\login.png" />
+    <EmbeddedResource Include="Resources\VIP_Image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.12" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.12" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.12" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.12" />
+    <PackageReference Include="MessageBox.Avalonia" Version="1.7.1" />
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="7.0.0-preview.3.22151.6" />
+    <PackageReference Include="TerraFX.Interop.Windows" Version="10.0.20348" />
+   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\MainWindow.axaml.cs">
+      <DependentUpon>MainWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

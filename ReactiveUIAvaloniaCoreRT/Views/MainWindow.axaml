@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		        xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="600"
+				Width="600" Height="600"	
+        x:Class="ReactiveUIAvaloniaCoreRT.Views.MainWindow"
+        Title="VIP"
+		TransparencyLevelHint="Mica"
+				Background="Black"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaChromeHints="PreferSystemChrome"
+>
+	<Window.Background>
+		<ImageBrush Stretch="UniformToFill" Source="resm:ReactiveUIAvaloniaCoreRT.Resources.VIP_Image.jpg"  />
+
+	</Window.Background>
+
+	<DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+		<rxui:RoutedViewHost     HorizontalContentAlignment="Stretch"
+    VerticalContentAlignment="Stretch" x:Name="RoutedViewHost"  Router="{Binding Router}">
+			
+		</rxui:RoutedViewHost>
+		
+
+	</DockPanel>
+</Window>

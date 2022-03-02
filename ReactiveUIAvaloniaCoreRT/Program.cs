@@ -1,0 +1,32 @@
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Dialogs;
+using Avalonia.ReactiveUI;
+using ReactiveUI;
+using ReactiveUIAvaloniaCoreRT.Models;
+using ReactiveUIAvaloniaCoreRT.Views;
+using Splat;
+using System;
+
+namespace ReactiveUIAvaloniaCoreRT
+{
+    internal class Program
+    {
+        // Initialization code. Don't use any Avalonia, third-party APIs or any
+        // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
+        // yet and stuff might break.
+        [STAThread]
+        public static void Main(string[] args) => BuildAvaloniaApp()
+            .StartWithClassicDesktopLifetime(args);
+
+        // Avalonia configuration, don't remove; also used by visual designer.
+        public static AppBuilder BuildAvaloniaApp()
+        {
+            Locator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
+            return AppBuilder.Configure<App>()
+               .UsePlatformDetect()
+               .LogToTrace().UseManagedSystemDialogs().UseReactiveUI();
+        }
+    }
+}
